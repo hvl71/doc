@@ -1,0 +1,9 @@
+Miniconda docker images are maintained here:
+https://github.com/ContinuumIO/docker-images
+
+From https://hub.docker.com/r/continuumio/miniconda3
+Can easily be executed using:
+
+docker pull continuumio/miniconda3
+docker run -i -t continuumio/miniconda3 /bin/bash
+
