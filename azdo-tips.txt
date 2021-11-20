@@ -1,0 +1,28 @@
+How to validate Azure Devops pipelines localhost
+
+https://github.com/MethodsAndPractices/vsteam
+http://www.donovanbrown.com/post/PowerShell-I-would-like-you-to-meet-TFS-and-VSTS
+
+From https://www.powershellgallery.com/packages/VSTeam/7.2.0
+Install-Module -Name VSTeam -RequiredVersion 7.2.0
+
+Import-Module VSTeam
+Set-VSTeamAccount -Account <organization> -PersonalAccessToken <PAT>
+
+Check authentication works
+Show-VSTeam
+
+In my case my Azure Devops instance is at https://dev.azure.com/hvl71/AzureDevOpsTestRun.
+Obviously the personal access token (PAT) should be kept strictly secret since it's as efficient as your normal login.
+You can get your PAT from your profile on Azure Devops (upper right corner, when logged-in, reduce rights and validity to a minimum)
+
+In my case I connect using the below command (is the account param a little misleading? Some places it will be called organization instead. Which is most correct?): 
+Set-VSTeamAccount -Account hvl71 -PersonalAccessToken <PAT>
+
+These simple commands can be used to check access:
+Show-VSTeam
+Get-VSTeam -ProjectName AzureDevOpsTestRun
+
+To test a Azure Devops pipeline without pushing or executing it run this type of command:
+Test-VSTeamYamlPipeline [[-PipelineId] <Int32>] [-FilePath <String>] -ProjectName <String> [<CommonParameters>]
+
