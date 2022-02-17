@@ -13,4 +13,13 @@ choco install curl
 
 choco install microsoft-windows-terminal
 
+#very cool k8s commandline manager 
+#https://k9scli.io/
+choco install k9s
+
+#Rancher Desktop installed manually
+#https://rancherdesktop.io/
+
+#Very cool containerized dev environment
+#https://gitpod.io/
 
