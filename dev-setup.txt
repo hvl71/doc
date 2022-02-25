@@ -23,3 +23,6 @@ choco install k9s
 #Very cool containerized dev environment
 #https://gitpod.io/
 
+#install PowerShell 7.2 (LTS)
+winget install --id Microsoft.Powershell --source winget
+
