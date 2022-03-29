@@ -1,0 +1,5 @@
+#update packages
+sudo apt-get update
+
+#install nuget - I think there is a .net core prerequisite - I already have Powershell core..
+sudo apt install nuget
