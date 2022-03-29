@@ -26,3 +26,6 @@ choco install k9s
 #install PowerShell 7.2 (LTS)
 winget install --id Microsoft.Powershell --source winget
 
+#great open source screen capturing tool - closest to SnagIt I have seen so far..
+#https://getsharex.com/
+
