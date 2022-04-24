@@ -3,3 +3,13 @@ sudo apt-get update
 
 #install nuget - I think there is a .net core prerequisite - I already have Powershell core..
 sudo apt install nuget
+
+#update  Powershell core
+sudo apt-get install powershell
+
+#open Windows explorer and browse WSL2/Linux
+explorer.exe
+
+#open code in WSL2/Linux using VS Code remote workspace
+code
+
