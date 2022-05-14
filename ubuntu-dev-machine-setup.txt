@@ -27,3 +27,6 @@ git config --global alias.pl pull
 
 #install VS Code
 sudo snap install --classic code
+
+#install Powershell
+sudo snap install powershell --classic
