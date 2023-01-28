@@ -1,3 +1,16 @@
+#switch user
+su - <user>
+example:
+su - hvl
+
+#start shell as root
+sudo -s
+
+#create a sudo-enabled user
+adduser <user>
+usermod -aG sudo <user>
+su - <user>
+
 #update packages
 sudo apt-get update
 
