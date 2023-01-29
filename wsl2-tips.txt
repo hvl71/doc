@@ -1,0 +1,2 @@
+#launch vs code, open files in current dir and return to bash prompt (similar to 'code .' in Windows)
+code . &
