@@ -1,11 +1,27 @@
-#create a context that defaults to a different namespace
+#create or update a context that defaults to a different namespace
 kubectl config set-context <ContextName> --namespace=<NameSpace>
 
 #use a specific context
 kubectl config use-context <ContextName>
+
+#see current context (full content)
+kubectl config view
+
+#get current context
+kubectl config current-context
+
+#list all contexts
+kubectl config get-contexts
 
 #use jsonpath range/end to split result on individual lines - Ubuntu
 kubectl get pods -o jsonpath='{range .items[*]}{.status.podIP}{"\n"}{end}'
 
 #use jsonpath range/end to split result on individual lines - Powershell delimiter
 kubectl get pod -o jsonpath='{range .items[*]}{.status.podIP}{\""\n\""}{end}'
+
+#use jsonpath to show images deployed in namespace
+kubectl get pods -n <namespace> -o jsonpath="{.items[*].spec.containers[*].image}"
+
+#use jsonpath to show images deployed in namespace on separate lines:
+kubectl get pods -n <namespace> -o jsonpath="{.items[*].spec.containers[*].image}"
+
