@@ -1,0 +1,11 @@
+#create a context that defaults to a different namespace
+kubectl config set-context <ContextName> --namespace=<NameSpace>
+
+#use a specific context
+kubectl config use-context <ContextName>
+
+#use jsonpath range/end to split result on individual lines - Ubuntu
+kubectl get pods -o jsonpath='{range .items[*]}{.status.podIP}{"\n"}{end}'
+
+#use jsonpath range/end to split result on individual lines - Powershell delimiter
+kubectl get pod -o jsonpath='{range .items[*]}{.status.podIP}{\""\n\""}{end}'
