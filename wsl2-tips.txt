@@ -1,2 +1,9 @@
 #launch vs code, open files in current dir and return to bash prompt (similar to 'code .' in Windows)
 code . &
+
+#Out of the box Docker Desktop only supports docker on the default WSL2 distribution. 
+#Additional distributions can however be docker-enabled in Docker Desktop via
+#Docker Desktop -> Settings -> Resources -> WSL Integration
+#
+#More info here: https://docs.docker.com/desktop/windows/wsl/
+
