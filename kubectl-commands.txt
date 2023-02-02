@@ -25,3 +25,12 @@ kubectl get pods -n <namespace> -o jsonpath="{.items[*].spec.containers[*].image
 #use jsonpath to show images deployed in namespace on separate lines:
 kubectl get pods -n <namespace> -o jsonpath="{.items[*].spec.containers[*].image}"
 
+#list all container images in all namespaces (from https://kubernetes.io/docs/tasks/access-application-cluster/list-all-running-container-images/)
+kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" |\
+tr -s '[[:space:]]' '\n' |\
+sort |\
+uniq -c
+
+
+
+
