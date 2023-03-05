@@ -7,7 +7,7 @@ https://unix.stackexchange.com/questions/360545/tmux-not-colorizing-ps1-prompt/5
 set -g default-terminal "xterm-256color"
 to ~/.tmux.conf
 
-
+https://leanpub.com/the-tao-of-tmux/read
 
 tmux		start tmux session
 C-b d		detach tmux session
@@ -36,6 +36,19 @@ C-b M       Clear the marked pane
 C-b c       Create a new window
 C-b w	    Choose window from a list
 
-Goals for tonight:
-	- fix bash color coding in tmux
-	- run tmux in my default wsl instance when starting
+Windows Terminal/Ubuntu - start tmux automatically (doesn't work - but via ~/.bashrc)
+https://www.bleepingcomputer.com/news/microsoft/windows-10-wsl-now-can-run-linux-commands-on-startup/
+
+
+in distro, in /etc/wsl.conf
+add 
+
+[user]
+default = <YourUser>
+
+[boot]
+command = tmux
+
+Restart wsl sessions
+wsl --shutdown
+
