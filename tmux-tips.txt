@@ -1,54 +1,136 @@
+*******************************************************************************************************************
 
-https://github.com/tmux/tmux/wiki/Getting-Started#creating-new-windows
+						BACKGROUND
 
+*******************************************************************************************************************
+
+Tmux is a so-called terminal multiplexer. If you work a lot on the command line on Linux (including WSL2), 
+this is a fantastic productivity tool!
+
+My primary WSL platform is latest version of Ubuntu. Tmux comes pre-installed in that distro.
+
+*******************************************************************************************************************
+
+					Tutorials, source and free ebook	
+
+*******************************************************************************************************************
+
+Great, easy to read and very entertaining guide to tmux:
+https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/
+
+Source and Wiki including official getting started guide:
+https://github.com/tmux/tmux/wiki
+
+Another great tutorial:
 https://protechnotes.com/comprehensive-tmux-tutorial-for-beginners-with-a-cheat-sheet/
 
-https://unix.stackexchange.com/questions/360545/tmux-not-colorizing-ps1-prompt/577104#577104?newreg=1fd5933bbb5b4cad825120416ea3653e
-set -g default-terminal "xterm-256color"
-to ~/.tmux.conf
-
+There is even a full free ebook available:
 https://leanpub.com/the-tao-of-tmux/read
 
-tmux		start tmux session
-C-b d		detach tmux session
-tmux attach	attach to latest detached session
+*******************************************************************************************************************
+
+					Tweaking of Tmux on WSL2	
+
+*******************************************************************************************************************
+
+1. Use Bash color scheme in tmux
+
+When I started using tmux on WSL it annoyed me that my usual bash color scheme did not propagate to tmux.
+
+Fortunately that is easy to fix. Reading the below entry on SE gave me the answer:
+https://unix.stackexchange.com/questions/360545/tmux-not-colorizing-ps1-prompt/577104#577104?newreg=1fd5933bbb5b4cad825120416ea3653e
+
+In ~/.tmux.config (in each of your WSL distros - if you have multiple) add this line
+set -g default-terminal "xterm-256color"
+
+Restart tmux session or WSL all togehter to reload configuration chage
+
+2. Start tmux automatically
+
+When I started using tmux on WSL I also wanted tmux to start automatically. I was simply afraid I would
+forget about this fantastic tool initially. Later on, it was just convenient that it was started in the
+very beginning. Also it is a great way to learn, constantly being reminded of it's existence. Anyway it
+is easy to configure tmux to start automatically.
+
+In my WSL Ubuntu distro I add this snippet to ~/.bashrc:
+
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
+
+Initially I just added tmux. Plain and simple. But that gave a warning about nested sessions.
+I then found the above snippet to fix that issue here:
+https://www.tecmint.com/tips-for-tmux-terminal-sessions/
+The article mentions adding it to ~/.bash_profile, but adding it to ~/.bashrc seems to work well in my case
+
+*******************************************************************************************************************
+
+					Commands	
+
+*******************************************************************************************************************
+
+Tmux offers a lot of commands and as with any other powerful and flexible tool, that can initially be overwhelming.
+The good news is, it is only needed to learn a few commands to use tmux very efficiently. The rest can be learnt
+later if relevant. It is all about getting started right?!
+
+Initially, two commands are needed. One to start tmux and one to detach again. Detaching a session, means
+return to the terminal from where tmux invoked and leave the tmux session run in the background. 
+
+Also you need to know the general key combination to activate tmux commands. 
+Most commands in tmux requires the so-called prefix command to be entered first. 
+
+The default prefix key combination is CTRL + b. The way it works, is 
+
+1/ press CTRL and b, then release both (read it again - release both..)
+2/ press the subsequent command key
+3/ Tmux by convention uses C-b as short-hand notation for CTRL + b
+
+Now let's look at how to use the command to detach (exit and leave running in the background):
+
+The command is:
+C-b d
+
+So to detach, simply press
+CTRL + b, release and type d
+
+Okay, the remaining commands that are super useful to know IMHO are:
+
+Start tmux session:
+tmux		
+
+Detach tmux session:
+C-b d		
+
+Attach to latest detached session (any of the below will work):
+tmux attach	
 tmux a
 tmux at
 tmux attach
 tmux attach-session
 
-tmux new -d -s <YourSessionName>	Create a new named session and detach
-tmux ls		list sessions
+Create a new named session
+tmux new -s <YourSessionName>
 
-The prefix key combination must be pressed and released before typing the modifier key
-The prefix key is default Ctrl+b. In tmux just referred to as C-b
+List existing tmux sessions
+tmux ls		
 
 C-b ?	    View key bindings
 C-b "       Split window vertically
 C-b %       Split window horizontally
-C-b C-o     Rotate through the panes
-C-b #       List all paste buffers
-C-b .       Move the current window
-C-b <n>     Select window <n>
+C-b x	    Close current pane
+C-b z	    toggle current pane (to full screen and back to original pane size)
 C-b :       Prompt for a command
-C-b =       Choose a paste buffer from a list
+
+C-b <n>     Select window <n>
+
 C-b M       Clear the marked pane
 C-b c       Create a new window
 C-b w	    Choose window from a list
 
-Windows Terminal/Ubuntu - start tmux automatically (doesn't work - but via ~/.bashrc)
-https://www.bleepingcomputer.com/news/microsoft/windows-10-wsl-now-can-run-linux-commands-on-startup/
+C-b #       List all paste buffers
+C-b .       Move the current window
+
+C-b =       Choose a paste buffer from a list
 
 
-in distro, in /etc/wsl.conf
-add 
-
-[user]
-default = <YourUser>
-
-[boot]
-command = tmux
-
-Restart wsl sessions
-wsl --shutdown
 
