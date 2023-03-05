@@ -1,0 +1,36 @@
+
+https://github.com/tmux/tmux/wiki/Getting-Started#creating-new-windows
+
+https://protechnotes.com/comprehensive-tmux-tutorial-for-beginners-with-a-cheat-sheet/
+
+
+tmux		start tmux session
+C-b d		detach tmux session
+tmux attach	attach to latest detached session
+tmux a
+tmux at
+tmux attach
+tmux attach-session
+
+tmux new -d -s <YourSessionName>	Create a new named session and detach
+tmux ls		list sessions
+
+The prefix key combination must be pressed and released before typing the modifier key
+The prefix key is default Ctrl+b. In tmux just referred to as C-b
+
+C-b ?	    View key bindings
+C-b "       Split window vertically
+C-b %       Split window horizontally
+C-b C-o     Rotate through the panes
+C-b #       List all paste buffers
+C-b .       Move the current window
+C-b <n>     Select window <n>
+C-b :       Prompt for a command
+C-b =       Choose a paste buffer from a list
+C-b M       Clear the marked pane
+C-b c       Create a new window
+C-b w	    Choose window from a list
+
+Goals for tonight:
+	- fix bash color coding in tmux
+	- run tmux in my default wsl instance when starting
