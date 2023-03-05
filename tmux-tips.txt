@@ -3,6 +3,11 @@ https://github.com/tmux/tmux/wiki/Getting-Started#creating-new-windows
 
 https://protechnotes.com/comprehensive-tmux-tutorial-for-beginners-with-a-cheat-sheet/
 
+https://unix.stackexchange.com/questions/360545/tmux-not-colorizing-ps1-prompt/577104#577104?newreg=1fd5933bbb5b4cad825120416ea3653e
+set -g default-terminal "xterm-256color"
+to ~/.tmux.conf
+
+
 
 tmux		start tmux session
 C-b d		detach tmux session
